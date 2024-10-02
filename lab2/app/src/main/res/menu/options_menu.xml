@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id = "@+id/first_animation"
+        android:title="@string/first_animation"
+        app:showAsAction = "collapseActionView"
+        />
+    <item
+        android:id = "@+id/second_animation"
+        android:title="@string/second_animation"
+        app:showAsAction = "collapseActionView"
+        />
+     <item
+         android:id = "@+id/mixed_animation"
+         android:title="@string/mixed_animation"
+         app:showAsAction = "collapseActionView"
+         />
+
+</menu>
