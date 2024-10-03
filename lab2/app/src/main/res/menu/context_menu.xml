@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id = "@+id/frog" android:title="@string/image_frog"/>
+    <item android:id = "@+id/fox" android:title="@string/image_fox"/>
     <item android:id = "@+id/among" android:title="@string/image_among"/>
-    <item android:id = "@+id/many_among" android:title="@string/image_among_many"/>
+    <item android:id = "@+id/bart" android:title="@string/image_bart"/>
 
 </menu>

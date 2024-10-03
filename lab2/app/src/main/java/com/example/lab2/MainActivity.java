@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +58,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        ImageView frog = findViewById(R.id.frog);
-        ImageView among = findViewById(R.id.among);
-        ImageView among_many = findViewById(R.id.many_among);
-
-
-
         Animation anim = null;
         int itemId = item.getItemId();
+        ImageView frog = findViewById(R.id.frog);
+        ImageView among = findViewById(R.id.among);
+        ImageView bart = findViewById(R.id.bart);
+        ImageView fox = findViewById(R.id.fox);
+
 
         if(itemId == R.id.first_animation){
             Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
@@ -75,42 +73,48 @@ public class MainActivity extends AppCompatActivity {
         else if(itemId == R.id.second_animation){
             Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
             anim = AnimationUtils.loadAnimation(this,R.anim.trans);
-
-
         }
         else if(itemId == R.id.mixed_animation){
             Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
             anim = AnimationUtils.loadAnimation(this,R.anim.mixed);
-
-
         }
         frog.startAnimation(anim);
+
+
+
 
         return super.onOptionsItemSelected(item);
     }
 
 
-    public static final int PICK_IMAGE = 99;
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
 
+        ImageView among = findViewById(R.id.among);
+        ImageView bart = findViewById(R.id.bart);
+        ImageView fox = findViewById(R.id.fox);
+
+
         int itemId = item.getItemId();
 
-        if(itemId == R.id.frog){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
-
-
+        switch (item.getItemId()) {
+            case R.id.fox:
+                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
+                fox.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.among:
+                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
+                among .setVisibility(View.VISIBLE);
+                return true;
+            case R.id.bart:
+                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
+                bart.setVisibility(View.VISIBLE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        else if(itemId == R.id.among){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
 
 
-        }
-        else if(itemId == R.id.many_among){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
-
-        }
-        return super.onContextItemSelected(item);
 
 
     }

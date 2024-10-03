@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">lab2</string>
     <string name = "Image_content">Image</string>
-    <string name = "image_frog">Frog</string>
+    <string name = "image_fox">fox</string>
     <string name = "image_among">One among us</string>
-    <string name = "image_among_many">Many among us</string>
+    <string name = "image_bart">Bart</string>
     <string name = "first_animation">First animation</string>
     <string name = "second_animation">Second animation</string>
     <string name = "mixed_animation">Mixed animation</string>
