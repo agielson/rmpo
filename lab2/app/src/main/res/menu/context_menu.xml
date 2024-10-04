@@ -3,5 +3,5 @@
     <item android:id = "@+id/fox" android:title="@string/image_fox"/>
     <item android:id = "@+id/among" android:title="@string/image_among"/>
     <item android:id = "@+id/bart" android:title="@string/image_bart"/>
-
+    <item android:id = "@+id/frog" android:title="@string/image_frog"/>
 </menu>

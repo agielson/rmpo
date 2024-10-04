@@ -53,36 +53,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         Animation anim = null;
         int itemId = item.getItemId();
         ImageView frog = findViewById(R.id.frog);
-        ImageView among = findViewById(R.id.among);
-        ImageView bart = findViewById(R.id.bart);
-        ImageView fox = findViewById(R.id.fox);
-
 
         if(itemId == R.id.first_animation){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"scale",Toast.LENGTH_SHORT).show();
             anim = AnimationUtils.loadAnimation(this,R.anim.scale);
         }
         else if(itemId == R.id.second_animation){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"translate",Toast.LENGTH_SHORT).show();
             anim = AnimationUtils.loadAnimation(this,R.anim.trans);
         }
         else if(itemId == R.id.mixed_animation){
-            Toast.makeText(this,"complited",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"mixed",Toast.LENGTH_SHORT).show();
             anim = AnimationUtils.loadAnimation(this,R.anim.mixed);
         }
         frog.startAnimation(anim);
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -90,35 +80,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
 
-        ImageView among = findViewById(R.id.among);
-        ImageView bart = findViewById(R.id.bart);
-        ImageView fox = findViewById(R.id.fox);
 
-
-        int itemId = item.getItemId();
+        ImageView imageView = (ImageView)findViewById(R.id.frog);
 
         switch (item.getItemId()) {
             case R.id.fox:
-                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
-                fox.setVisibility(View.VISIBLE);
+                imageView.setImageResource(R.drawable.free_png_ru_32);
+                Toast.makeText(this, "it's fox", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.among:
-                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
-                among .setVisibility(View.VISIBLE);
+                imageView.setImageResource(R.drawable.free_png_ru_63);
+                Toast.makeText(this, "it's amongus ", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.bart:
-                Toast.makeText(this, "complited", Toast.LENGTH_SHORT).show();
-                bart.setVisibility(View.VISIBLE);
+                imageView.setImageResource(R.drawable.free_png_ru_130);
+                Toast.makeText(this, "it's bart", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.frog:
+                imageView.setImageResource(R.drawable.free_png_ru_207);
+                Toast.makeText(this, "it's frog", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
-
-
-
     }
-
-
-
 }
