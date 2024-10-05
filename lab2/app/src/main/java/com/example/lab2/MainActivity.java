@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ import org.jetbrains.annotations.NonNls;
 public class MainActivity extends AppCompatActivity {
 
 
+    private static final String TAG = "myLogs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
+
         getMenuInflater().inflate(R.menu.options_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -62,14 +65,17 @@ public class MainActivity extends AppCompatActivity {
 
         if(itemId == R.id.first_animation){
             Toast.makeText(this,"scale",Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "элемент увеличение Анимация");
             anim = AnimationUtils.loadAnimation(this,R.anim.scale);
         }
         else if(itemId == R.id.second_animation){
             Toast.makeText(this,"translate",Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "элемент Анимация Появления");
             anim = AnimationUtils.loadAnimation(this,R.anim.trans);
         }
         else if(itemId == R.id.mixed_animation){
             Toast.makeText(this,"mixed",Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "элемент Микс Анимация");
             anim = AnimationUtils.loadAnimation(this,R.anim.mixed);
         }
         frog.startAnimation(anim);
@@ -87,22 +93,28 @@ public class MainActivity extends AppCompatActivity {
             case R.id.fox:
                 imageView.setImageResource(R.drawable.free_png_ru_32);
                 Toast.makeText(this, "it's fox", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "элемент Лиса");
                 return true;
             case R.id.among:
                 imageView.setImageResource(R.drawable.free_png_ru_63);
                 Toast.makeText(this, "it's amongus ", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "элемент Амонг");
                 return true;
             case R.id.bart:
                 imageView.setImageResource(R.drawable.free_png_ru_130);
                 Toast.makeText(this, "it's bart", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "элемент Барт");
                 return true;
             case R.id.frog:
                 imageView.setImageResource(R.drawable.free_png_ru_207);
                 Toast.makeText(this, "it's frog", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "элемент Лягушка");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
     }
+
+
 }
