@@ -36,30 +36,40 @@ public class ActivityResult extends AppCompatActivity {
 
     private void setDrawable() {
         GradientDrawable shape = (GradientDrawable) getDrawable(R.drawable.circle);
-        //GradientDrawable shapeStroke = (GradientDrawable) getDrawable(R.drawable.stroke);
-       // GradientDrawable shapeStar = (GradientDrawable) getDrawable(R.drawable.star);
+        GradientDrawable shapeStar = (GradientDrawable) getDrawable(R.drawable.star);
+        GradientDrawable shapeStroke = (GradientDrawable) getDrawable(R.drawable.stroke);
+
+
+
         TextView textView = findViewById(R.id.textView);
         Intent i = getIntent();
+
         String name = i.getStringExtra("key");
         textView.setText(name);
+
+        String colorString = i.getStringExtra("color");
+        int color = Color.parseColor("#"+colorString);
+        textView.setText(colorString);
 
 
         switch (name) {
             case "1":
                 shape.setShape(GradientDrawable.OVAL);
-                shape.setColor(Color.rgb(255, 0, 0));
+                shape.setColor(color);
                 imageView.setImageResource(R.drawable.circle);
-
                 break;
             case "2":
                 shape.setShape(GradientDrawable.RECTANGLE);
+                shape.setColor(color);
                 imageView.setImageResource(R.drawable.circle);
-
                 break;
             case "3":
+                shapeStroke.setColor(color);
                 imageView.setImageResource(R.drawable.stroke);
                 break;
             case "4":
+                shapeStar.setShape(GradientDrawable.RING);
+                shapeStar.setColor(color);
                 imageView.setImageResource(R.drawable.star);
                 break;
         }

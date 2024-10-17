@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity  {
 
     String num = "0";
+    String color = "0";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity  {
     public void onClickedButton(View view) {
         Intent intent = new Intent(this, ActivityResult.class);
 
+        EditText editText;
         RadioGroup radioGroup = findViewById(R.id.group);
         int selectedId = radioGroup.getCheckedRadioButtonId();
         //num = "Oval";
@@ -40,16 +44,18 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.rectangle:
                 num = "2";
                 break;
-            case R.id.hexagon:
+            case R.id.egg:
                 num = "3";
                 break;
-            case R.id.traingle:
+            case R.id.ring:
                 num = "4";
                 break;
 
         }
 
         Button buttonResult;
+        editText = (EditText) findViewById(R.id.color);
+        intent.putExtra("color",editText.getText().toString().toUpperCase());
 
         switch (view.getId()){
             case R.id.buttonResult:
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity  {
             default:
                 break;
         }
+
 
     }
 
