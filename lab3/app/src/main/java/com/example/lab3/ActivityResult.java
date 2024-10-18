@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -34,22 +35,31 @@ public class ActivityResult extends AppCompatActivity {
         });
     }
 
+
+
     private void setDrawable() {
         GradientDrawable shape = (GradientDrawable) getDrawable(R.drawable.circle);
         GradientDrawable shapeStar = (GradientDrawable) getDrawable(R.drawable.star);
         GradientDrawable shapeStroke = (GradientDrawable) getDrawable(R.drawable.stroke);
-
-
-
-        TextView textView = findViewById(R.id.textView);
         Intent i = getIntent();
 
+
+        imageView = (ImageView) findViewById(R.id.imageView);
+
+        int x = i.getIntExtra("x",1);
+        int y = i.getIntExtra("y",1);
+
+
+        imageView.setTranslationX(x);
+        imageView.setTranslationY(y);
+
+
+
         String name = i.getStringExtra("key");
-        textView.setText(name);
 
         String colorString = i.getStringExtra("color");
         int color = Color.parseColor("#"+colorString);
-        textView.setText(colorString);
+
 
 
         switch (name) {

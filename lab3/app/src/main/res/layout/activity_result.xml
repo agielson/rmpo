@@ -16,10 +16,9 @@
         android:text="Your result"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.939" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,21 +26,15 @@
         android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:background="#FAF8F8"
-        android:scaleType="center"
+        android:scaleType="centerInside"
+        android:translationX="0dp"
+        android:translationY="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"></ImageView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Text"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="377dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity  {
 
     String num = "0";
-    String color = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity  {
 
     public void onClickedButton(View view) {
         Intent intent = new Intent(this, ActivityResult.class);
+
 
         EditText editText;
         RadioGroup radioGroup = findViewById(R.id.group);
@@ -57,11 +57,69 @@ public class MainActivity extends AppCompatActivity  {
         editText = (EditText) findViewById(R.id.color);
         intent.putExtra("color",editText.getText().toString().toUpperCase());
 
+        int zero = 1;
+        int centerX = 159;
+        int centerY = 250;
+
+
         switch (view.getId()){
-            case R.id.buttonResult:
+            case R.id.buttonResult1:
                 intent.putExtra("key",num);
+                intent.putExtra("x",zero);
+                intent.putExtra("y",zero);
                 startActivity(intent);
                 break;
+            case R.id.buttonResult2:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX);
+                intent.putExtra("y",zero);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult3:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX*2);
+                intent.putExtra("y",zero);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult4:
+                intent.putExtra("key",num);
+                intent.putExtra("x",zero);
+                intent.putExtra("y",centerY);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult5:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX);
+                intent.putExtra("y",centerY);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult6:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX*2);
+                intent.putExtra("y",centerY);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult7:
+                intent.putExtra("key",num);
+                intent.putExtra("x",zero);
+                intent.putExtra("y",centerY*2);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult8:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX);
+                intent.putExtra("y",centerY*2);
+                startActivity(intent);
+                break;
+            case R.id.buttonResult9:
+                intent.putExtra("key",num);
+                intent.putExtra("x",centerX*2);
+                intent.putExtra("y",centerY*2);
+                startActivity(intent);
+                break;
+
+
+
             default:
                 break;
         }
