@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddActivity extends AppCompatActivity {
 
-    EditText editText_price,editText_video_card,editText_diagonal,editText_CPU,editText_os;
+    EditText editText_price,editText_video_card,editText_diagonal,editText_CPU,editText_os,editText_volume_hd;
     Button add_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class AddActivity extends AppCompatActivity {
         editText_video_card = findViewById(R.id.editText_video_card);
         editText_os = findViewById(R.id.editText_os);
         editText_price = findViewById(R.id.editText_price);
+        editText_volume_hd = findViewById(R.id.editText_volume_hd);
         add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,7 @@ public class AddActivity extends AppCompatActivity {
                 myBD.addLaptop(editText_CPU.getText().toString().trim(),
                         Integer.valueOf(editText_diagonal.getText().toString().trim()),
                         editText_video_card.getText().toString().trim(),
+                        Integer.valueOf(editText_volume_hd.getText().toString().trim()),
                         editText_os.getText().toString().trim(),
                         Integer.valueOf(editText_price.getText().toString().trim()));
             }
