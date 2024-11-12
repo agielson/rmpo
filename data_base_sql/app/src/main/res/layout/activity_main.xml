@@ -8,10 +8,31 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/sort8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More than"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795" />
+
+    <Button
+        android:id="@+id/sort7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Below avg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.691" />
+
+    <Button
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:text="+"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,4 +41,103 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97" />
+
+    <Button
+        android:id="@+id/sort1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by num"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
+
+
+    <Button
+        android:id="@+id/sort2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by same"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <Button
+        android:id="@+id/sort3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total sum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.277" />
+
+    <Button
+        android:id="@+id/sort4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AVG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <Button
+        android:id="@+id/sort5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <Button
+        android:id="@+id/sort6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More than"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" >
+
+        <RadioButton
+            android:id="@+id/radioButton_cpu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CPU" />
+
+        <RadioButton
+            android:id="@+id/radioButton_diagonal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diagonal" />
+
+        <RadioButton
+            android:id="@+id/radioButton_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Video Card" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

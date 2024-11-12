@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Data_base_sql"
         tools:targetApi="31">
         <activity
+            android:name=".ListView"
+            android:exported="false" />
+        <activity
             android:name=".AddingData"
             android:exported="false" />
         <activity

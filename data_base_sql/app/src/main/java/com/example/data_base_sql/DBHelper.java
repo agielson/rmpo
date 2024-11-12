@@ -1,6 +1,7 @@
 package com.example.data_base_sql;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -21,9 +22,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_PRICE = "price";
 
 
+
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -39,6 +41,26 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+ TABLE_LAPTOP);
 
         onCreate(db);
+    }
+    public Cursor getData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_LAPTOP+" Order by "+KEY_PRICE+" DESC ",null);
+        return res;
+    }
+    public Cursor getSort2(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from ( "+"select * from  "+TABLE_LAPTOP+" Order by "+KEY_PRICE+" ) order by  "+KEY_OS,null);
+        return res;
+    }
+    public Cursor getTotalPrice(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select SUM(price) from "+TABLE_LAPTOP,null);
+        return res;
+    }
 
+    public Cursor getSortCheck(String data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select AVG("+KEY_DIAGONAL+") from "+TABLE_LAPTOP+" order by "+ data,null);
+        return res;
     }
 }

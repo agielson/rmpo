@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddingData extends AppCompatActivity implements View.OnClickListener {
 
-    Button read_button, add_button, clear_button, update_button, delete_button;
+    Button read_button, add_button, clear_button;
     EditText editText_id,editText_CPU,editText_diagonal,editText_video_card,editText_volume_hd,editText_os,editText_price;
 
     DBHelper dbHelper;
@@ -42,11 +42,8 @@ public class AddingData extends AppCompatActivity implements View.OnClickListene
         clear_button = (Button)findViewById(R.id.clear_button);
         clear_button.setOnClickListener(this);
 
-        update_button = (Button)findViewById(R.id.updateButton);
-        update_button.setOnClickListener(this);
 
-        delete_button = (Button)findViewById(R.id.delete_button);
-        delete_button.setOnClickListener(this);
+
 
 
 
@@ -114,29 +111,8 @@ public class AddingData extends AppCompatActivity implements View.OnClickListene
             case R.id.clear_button:
                 database.delete(DBHelper.TABLE_LAPTOP,null,null);
                 break;
-            case R.id.updateButton:
-                if(id.equalsIgnoreCase("")){
-                    break;
-                }
-                contentValues.put(DBHelper.KEY_CPU,cpu);
-                contentValues.put(DBHelper.KEY_DIAGONAL,diagonal);
-                contentValues.put(DBHelper.KEY_VIDEO_CARD,video_card);
-                contentValues.put(DBHelper.KEY_VOLUME_HD,volume_hd);
-                contentValues.put(DBHelper.KEY_OS,os);
-                contentValues.put(DBHelper.KEY_PRICE,price);
-                int updCount = database.update(DBHelper.TABLE_LAPTOP,contentValues, DBHelper.KEY_ID + "= ?",new String[] {id});
-                Log.d("mLog","updates rows count = " +updCount);
-                break;
-
-            case R.id.delete_button:
-                if(id.equalsIgnoreCase("")){
-                    break;
-                }
-                int delCount = database.delete(DBHelper.TABLE_LAPTOP,DBHelper.KEY_ID + "=" +id,null);
-                Log.d("mLog","delete = "+ delCount);
-
-
         }
         dbHelper.close();
     }
 }
+
