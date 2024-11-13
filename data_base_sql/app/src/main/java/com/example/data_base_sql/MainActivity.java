@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -19,12 +21,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 
 public class MainActivity extends AppCompatActivity  {
     final String LOG_TAG = "myLog";
     Button sort1,sort2,sort3,sort4,sort5,sort6,sort7,sort8,button_add;
     DBHelper dbHelper;
     SQLiteDatabase db;
+    EditText editInputNum;
+    Intent num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,26 +63,45 @@ public class MainActivity extends AppCompatActivity  {
         addingData();
         getTotalSumPrice();
         getAVG();
+        getMax();
+        getMore();
+        getLessThanAvg();
+        getMore_1();
 
     }
 
-    public void sortByPrice(){
+    public void sortByPrice() {
         sort1.setOnClickListener(
 
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view){
                         Cursor res = dbHelper.getData();
                         if(res.getCount()==0){
                             showMessage("Error","Nothing found");
                             return;
                         }
                         StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Id : "+res.getString(0)+"\n");
+                            buffer.append("CPU : "+res.getString(1)+"\n");
+                            buffer.append("Diagonal : "+res.getString(2)+"\n");
+                            buffer.append("Video Card : "+res.getString(3)+"\n");
+                            buffer.append("Volume of hard disk : "+res.getString(4)+"\n");
+                            buffer.append("OS : "+res.getString(5)+"\n");
+                            buffer.append("Price : "+res.getString(6)+"\n\n");
+                            myLog(res);
+                            try {
+                                writeInFile(buffer,"querry1.txt");
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                        Log.i("mLog"," \n----------------------------------------------------\n");
 
-                        buffer.append("Id : "+res.getString(1)+"\n");
-                        myLog(res);
 
-                        showMessage("Laptop",buffer.toString());
+                        //showMessage("Laptop",buffer.toString());
+
                     }
                 }
         );
@@ -99,10 +128,14 @@ public class MainActivity extends AppCompatActivity  {
                             buffer.append("Price : "+res.getString(6)+"\n\n");
                             myLog(res);
                         }
+                        Log.i("mLog"," \n----------------------------------------------------\n");
+
                         showMessage("Laptop",buffer.toString());
                     }
                 }
+
         );
+
     }
     public void getTotalSumPrice(){
         sort3.setOnClickListener(
@@ -119,13 +152,20 @@ public class MainActivity extends AppCompatActivity  {
                         StringBuffer buffer = new StringBuffer();
                         while(res.moveToNext()){
                             buffer.append("Price : "+res.getString(0)+"\n");
+                            Log.d("mLog", buffer.toString());
+                            try {
+                                writeInFile(buffer,"querry2.txt");
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
                         }
-                        showMessage("Laptop",buffer.toString());
-                        myLog(res);
-
+                        Log.i("mLog"," \n----------------------------------------------------\n");
+                        //showMessage("Laptop",buffer.toString());
                     }
+
                 }
         );
+
     }
     public void getAVG(){
 
@@ -138,13 +178,13 @@ public class MainActivity extends AppCompatActivity  {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         switch (selectedId){
                             case R.id.radioButton_cpu:
-                                col = "cpu";
+                                col = "diagonal";
                                 break;
                             case R.id.radioButton_diagonal:
-                                col= "os";
+                                col= "volume_hd";
                                 break;
                             case R.id.radioButton_video:
-                                col= "video_card";
+                                col= "price";
                                 break;
                         }
                         Cursor res = dbHelper.getSortCheck(col);
@@ -154,12 +194,132 @@ public class MainActivity extends AppCompatActivity  {
                         }
                         StringBuffer buffer = new StringBuffer();
                         while(res.moveToNext()){
-                            buffer.append("AVG : "+res.getString(0)+"\n");
+                            buffer.append(col+" "+res.getString(0)+"\n");
+                            Log.d("mLog", buffer.toString());
+                            try {
+                                writeInFile(buffer,"querry4.txt");
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
 
                         }
+                        Log.i("mLog"," \n----------------------------------------------------\n");
                         showMessage("Laptop",buffer.toString());
-                        myLog(res);
 
+
+                    }
+                }
+        );
+
+    }
+    public void getMax(){
+        sort5.setOnClickListener(
+
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Cursor res = dbHelper.getMaxNum();
+                        if(res.getCount()==0){
+                            showMessage("Error","Nothing found");
+                            return;
+                        }
+                        StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Max num : "+res.getString(0)+"\n");
+                            Log.d("mLog", buffer.toString());
+                        }
+                        Log.i("mLog"," \n----------------------------------------------------\n");
+                        //showMessage("Laptop",buffer.toString());
+                    }
+                }
+        );
+
+    }
+    public void getMore(){
+        sort6.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        editInputNum = (EditText) findViewById(R.id.editTextInputNum);
+                        Integer price = Integer.valueOf(editInputNum.getText().toString().trim());
+                        Cursor res = dbHelper.getMoreThan(price,0);
+                        if(res.getCount()==0){
+                            showMessage("Error","Nothing found");
+                            return;
+                        }
+                        StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Id : "+res.getString(0)+"\n");
+                            buffer.append("CPU : "+res.getString(1)+"\n");
+                            buffer.append("Diagonal : "+res.getString(2)+"\n");
+                            buffer.append("Video Card : "+res.getString(3)+"\n");
+                            buffer.append("Volume of hard disk : "+res.getString(4)+"\n");
+                            buffer.append("OS : "+res.getString(5)+"\n");
+                            buffer.append("Price : "+res.getString(6)+"\n\n");
+                            myLog(res);
+                        }
+                        Log.i("mLog"," \n----------------------------------------------------\n");
+
+                        showMessage("Laptop",buffer.toString());
+                    }
+                }
+        );
+
+    }
+    public void getLessThanAvg(){
+        sort7.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Cursor res = dbHelper.showLessAvg();
+                        if(res.getCount()==0){
+                            showMessage("Error","Nothing found");
+                            return;
+                        }
+                        StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Id : "+res.getString(0)+"\n");
+                            buffer.append("CPU : "+res.getString(1)+"\n");
+                            buffer.append("Diagonal : "+res.getString(2)+"\n");
+                            buffer.append("Video Card : "+res.getString(3)+"\n");
+                            buffer.append("Volume of hard disk : "+res.getString(4)+"\n");
+                            buffer.append("OS : "+res.getString(5)+"\n");
+                            buffer.append("Price : "+res.getString(6)+"\n\n");
+                            myLog(res);
+                        }
+
+                        Log.i("mLog"," \n----------------------------------------------------\n");
+                        showMessage("Laptop",buffer.toString());
+                    }
+                }
+        );
+
+    }
+    public void getMore_1(){
+        sort8.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        editInputNum = (EditText) findViewById(R.id.editTextInputNum);
+                        Integer price = Integer.valueOf(editInputNum.getText().toString().trim());
+                        Cursor res = dbHelper.getMoreThan(price,1);
+                        if(res.getCount()==0){
+                            showMessage("Error","Nothing found");
+                            return;
+                        }
+                        StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Id : "+res.getString(0)+"\n");
+                            buffer.append("CPU : "+res.getString(1)+"\n");
+                            buffer.append("Diagonal : "+res.getString(2)+"\n");
+                            buffer.append("Video Card : "+res.getString(3)+"\n");
+                            buffer.append("Volume of hard disk : "+res.getString(4)+"\n");
+                            buffer.append("OS : "+res.getString(5)+"\n");
+                            buffer.append("Price : "+res.getString(6)+"\n\n");
+                            Log.i("mLog"," \n----------------------------------------------------\n");
+                            myLog(res);
+                        }
+                        //showMessage("Laptop",buffer.toString());
                     }
                 }
         );
@@ -200,5 +360,17 @@ public class MainActivity extends AppCompatActivity  {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+
     }
+    public void writeInFile(StringBuffer data,String fileName) throws Exception {
+        FileOutputStream outputStream = openFileOutput(fileName, MODE_PRIVATE);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+
+        bufferedWriter.write(data.toString());
+        Toast.makeText(this, "Data in file", Toast.LENGTH_SHORT).show();
+        bufferedWriter.close();
+    }
+
+
 }

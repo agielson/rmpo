@@ -1,6 +1,8 @@
 package com.example.data_base_sql;
 
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,8 +26,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
+
     }
 
     @Override
@@ -49,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public Cursor getSort2(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from ( "+"select * from  "+TABLE_LAPTOP+" Order by "+KEY_PRICE+" ) order by  "+KEY_OS,null);
+        Cursor res = db.rawQuery("select * from ( "+"select * from  "+TABLE_LAPTOP+" Order by "+KEY_CPU+" ) order by  "+KEY_OS,null);
         return res;
     }
     public Cursor getTotalPrice(){
@@ -60,7 +64,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getSortCheck(String data){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select AVG("+KEY_DIAGONAL+") from "+TABLE_LAPTOP+" order by "+ data,null);
+        Cursor res = db.rawQuery("select AVG("+data+") from "+TABLE_LAPTOP,null);
         return res;
     }
+    public Cursor getMaxNum(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select MAX(price) from "+TABLE_LAPTOP,null);
+        return res;
+    }
+    public Cursor getMoreThan(Integer price,Integer lim){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if(lim==1){
+            Cursor res = db.rawQuery("select * from "+TABLE_LAPTOP+" where price > "+price + " LIMIT "+ lim,null);
+            return res;
+        }else{
+            Cursor res = db.rawQuery("select * from "+TABLE_LAPTOP+" where price > "+price,null);
+            return res;
+        }
+
+
+    }
+    public Cursor showLessAvg(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_LAPTOP+" where diagonal < (Select AVG(diagonal) from "+TABLE_LAPTOP+" )",null);
+        return res;
+    }
+
+
 }

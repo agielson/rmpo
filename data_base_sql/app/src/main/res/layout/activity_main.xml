@@ -11,28 +11,29 @@
         android:id="@+id/sort8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="More than"
+        android:text="One price more"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795" />
+        app:layout_constraintVertical_bias="0.59" />
 
     <Button
         android:id="@+id/sort7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Below avg"
+        android:text="Below avg diagonal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.844" />
 
     <Button
         android:id="@+id/button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="+"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,39 +43,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97" />
 
+
     <Button
         android:id="@+id/sort1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort by num"
+        android:text="Sort by price"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
-
+        app:layout_constraintVertical_bias="0.069" />
 
     <Button
         android:id="@+id/sort2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort by same"
+        android:text="Sort by OS and CPU"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <Button
         android:id="@+id/sort3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total sum"
+        android:text="Total price"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.577"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/sort4"
@@ -83,32 +87,34 @@
         android:text="AVG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/sort5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Max"
+        android:text=" Max value "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.34" />
 
     <Button
         android:id="@+id/sort6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="More than"
+        android:text="Price more"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
+        app:layout_constraintVertical_bias="0.59" />
 
     <RadioGroup
         android:id="@+id/group"
@@ -125,19 +131,34 @@
             android:id="@+id/radioButton_cpu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CPU" />
+            android:text="Diagonal" />
 
         <RadioButton
             android:id="@+id/radioButton_diagonal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Diagonal" />
+            android:text="Volume" />
 
         <RadioButton
             android:id="@+id/radioButton_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Video Card" />
+            android:text="Price" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextInputNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="More than"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
