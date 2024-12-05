@@ -40,11 +40,7 @@ public class widget extends AppWidgetProvider {
 
         SharedPreferences sp = context.getSharedPreferences(widgetConfigureActivity.PREFS_NAME,MODE_PRIVATE);
 
-
-        String color  = sp.getString("color","#ffffff");
-        Log.d("myyy", color);
-
-        //String color = sp.getString( widgetConfigureActivity.PREF_COLOR+String.valueOf(appWidgetId),"#ffffff");
+        String color = sp.getString( widgetConfigureActivity.PREF_COLOR+String.valueOf(appWidgetId),"#ffffff");
 
         views.setInt(R.id.LineaRLayout1, "setBackgroundColor", Color.parseColor(color));
 
@@ -52,7 +48,8 @@ public class widget extends AppWidgetProvider {
         confIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,appWidgetId);
 
         confIntent.setData(Uri.parse(confIntent.toUri(Intent.URI_INTENT_SCHEME)));
-        views.setOnClickPendingIntent(R.id.appwidget_text, PendingIntent.getActivity(context,appWidgetId,confIntent,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE));
+        views.setOnClickPendingIntent(R.id.appwidget_text, PendingIntent.getActivity(context,appWidgetId,confIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE));
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
