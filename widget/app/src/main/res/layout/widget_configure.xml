@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:labelFor="@id/appwidget_text"
+        android:text="@string/configure" />
+
+    <EditText
+        android:id="@+id/appwidget_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+
+    <LinearLayout
+        android:layout_width="367dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButtonBlue"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/blue_1403fc" />
+
+        <ImageButton
+            android:id="@+id/imageButtonPer"
+            android:layout_width="87dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/purple_eb03fc" />
+
+        <ImageButton
+            android:id="@+id/imageButtonGreen"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/green_14fc03" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRed"
+            android:layout_width="86dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/red_fc5603" />
+
+    </LinearLayout>
+
+</LinearLayout>
